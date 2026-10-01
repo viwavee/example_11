@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Артём & Соня — Свадьба</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Playfair+Display:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#5a3a45;--bg:#f5ead6;--paper:#efe1c8;--card:#f5ead6;--ash:#8f6e74;--line:#e0cfb0;--pink:#f0c3d2;--orange:#f4d2b9;--yellow:#f3e6b8;--green:#c2e0cf;--blue:#c0d3f0;--purple:#d3c8ee;--pink-d:#d99ab2;--blue-d:#9db8e2;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+html{scroll-behavior:smooth;scroll-padding-top:env(safe-area-inset-top,0px)}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font-family:'Cormorant Garamond',serif;line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+h1,h2,h3,.pf{font-family:'Playfair Display',serif}
+.invite{max-width:none;margin:0 auto;background:var(--card);position:relative;overflow:hidden}
+.rv{opacity:0;transform:translateY(26px);transition:opacity .9s cubic-bezier(.22,.61,.36,1),transform .9s cubic-bezier(.22,.61,.36,1)}
+.rv.on{opacity:1;transform:none}
+.fl{position:absolute;pointer-events:none;filter:drop-shadow(0 3px 5px rgba(122,42,64,.16));animation:sway 6s ease-in-out infinite}
+@keyframes sway{0%,100%{transform:rotate(var(--r,0deg))}50%{transform:rotate(calc(var(--r,0deg) + 10deg)) scale(1.05)}}
+@media(prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}.fl{animation:none}}
+
+/* hero */
+.hero{position:relative;height:100vh;min-height:620px;max-height:760px;max-width:860px;margin:0 auto;overflow-y:clip}
+.hero::before{content:'';position:absolute;top:0;bottom:0;left:50%;width:100vw;transform:translateX(-50%);background:radial-gradient(circle at 18% 14%,rgba(247,168,192,.5),transparent 42%),radial-gradient(circle at 86% 22%,rgba(169,200,242,.5),transparent 42%),radial-gradient(circle at 80% 90%,rgba(249,220,134,.55),transparent 42%),radial-gradient(circle at 14% 88%,rgba(169,220,188,.55),transparent 42%),var(--paper)}
+.arch{position:absolute;left:50%;top:7%;transform:translateX(-50%);width:min(74%,340px);height:70%;border:1px solid var(--ink);border-radius:999px 999px 0 0}
+.arch::after{content:'';position:absolute;inset:9px;border:1px solid var(--pink);border-radius:999px 999px 0 0}
+.mono{position:absolute;font-family:'Playfair Display',serif;font-weight:300;line-height:1;font-size:clamp(78px,22vw,130px);z-index:2}
+.mono-a{top:26%;left:18%;color:#111}.mono-b{bottom:12%;right:18%;color:#111}
+.vert{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%) rotate(90deg);white-space:nowrap;font-style:italic;font-size:clamp(19px,4.2vw,26px);letter-spacing:5px;z-index:2}
+.hdate{position:absolute;bottom:5%;left:50%;transform:translateX(-50%);font:700 clamp(22px,5vw,30px) 'Playfair Display',serif;letter-spacing:4px;z-index:3;white-space:nowrap}
+.hdate::before,.hdate::after{content:'';display:inline-block;width:8px;height:8px;border-radius:50%;margin:0 14px;vertical-align:middle;background:var(--orange)}
+.hdate::after{background:var(--green)}
+
+.section{padding:62px 36px;text-align:center;position:relative}
+@media(max-width:480px){.section{padding:46px 22px}}
+.eyebrow{font-size:13px;letter-spacing:2.5px;font-weight:600;text-transform:uppercase;color:var(--ash);margin-bottom:18px;display:inline-block;border-bottom:2px solid var(--a,var(--pink));padding-bottom:8px}
+.greeting p{font-size:clamp(19px,3.4vw,23px);max-width:560px;margin:0 auto;font-weight:500}
+.sep{display:flex;align-items:center;justify-content:center;gap:16px;padding:0 36px}
+.sep::before,.sep::after{content:'';flex:1;max-width:120px;height:1px;background:var(--line)}
+.sep svg{width:30px;height:30px}
+
+/* calendar */
+.calendar-section{padding:66px 24px;text-align:center;background:linear-gradient(180deg,rgba(249,220,134,.28),rgba(247,168,192,.25));display:flex;flex-direction:column;align-items:center}
+.cal-card{background:var(--card);border:1px solid var(--line);box-shadow:0 14px 40px rgba(74,20,32,.12);padding:40px 30px 32px;width:100%;max-width:380px;border-radius:4px;border-top:5px solid var(--yellow)}
+@media(max-width:480px){.cal-card{padding:32px 14px 26px}}
+.cal-month{font:700 clamp(28px,6vw,38px) 'Playfair Display',serif;letter-spacing:4px;margin-bottom:24px}
+.cw,.cd{display:grid;grid-template-columns:repeat(7,1fr);column-gap:4px}
+.cw{margin-bottom:12px}.cw span{font-size:13px;font-weight:600;color:var(--ash)}
+.cd{row-gap:clamp(6px,2vw,12px)}
+.cc{position:relative;aspect-ratio:1;font:500 clamp(14px,3.4vw,17px) 'Playfair Display',serif;display:flex;align-items:center;justify-content:center}
+.cc.hl{font-weight:700;color:var(--pink-d)}
+.cc svg{position:absolute;left:50%;top:50%;width:150%;height:150%;transform:translate(-50%,-50%);pointer-events:none}
+.cc svg path{fill:rgba(240,195,210,.3);stroke:var(--pink-d);stroke-width:1.2}
+.cal-sub{margin-top:22px;font-size:16px;letter-spacing:2px;color:var(--ash);font-weight:500}
+
+/* timeline */
+.sch{max-width:580px;margin:0 auto;position:relative;text-align:left}
+.sch::before{content:'';position:absolute;left:62px;top:4px;bottom:4px;width:1px;background:var(--line)}
+.si{display:flex;gap:22px;align-items:flex-start;padding:0 0 28px;position:relative}
+.si:last-child{padding-bottom:0}
+.st{flex:0 0 52px;font:500 16px 'Playfair Display',serif;color:var(--ash);padding-top:2px;text-align:right}
+.sd{flex:0 0 20px;display:flex;justify-content:center;padding-top:6px;position:relative;z-index:1}
+.sd i{width:11px;height:11px;border-radius:50%;background:var(--c);box-shadow:0 0 0 4px var(--card)}
+.sx strong{display:block;font:700 17px 'Playfair Display',serif;margin-bottom:2px}
+.sx span{font-size:16px;color:var(--ash)}
+
+/* locations */
+.loc{background:color-mix(in srgb,var(--c) 16%,var(--card));border-radius:24px;padding:36px 34px;text-align:left;max-width:600px;margin:16px auto}
+@media(max-width:640px){.loc{margin:14px 20px}}
+.lt{font-size:12px;letter-spacing:2px;text-transform:uppercase;font-weight:600;color:var(--ash);margin-bottom:8px}
+.ln{font:700 clamp(22px,4vw,27px) 'Playfair Display',serif;margin-bottom:6px}
+.la{font-size:18px;color:var(--ash);margin-bottom:18px}
+.btn{display:inline-block;padding:10px 26px;border-radius:40px;border:1px solid var(--ink);color:var(--ink);font:500 15px 'Cormorant Garamond',serif;letter-spacing:1.5px;text-decoration:none;transition:.2s}
+.btn:hover{background:var(--ink);color:var(--card)}
+
+/* dress */
+.pal{display:flex;justify-content:center;gap:12px;margin-top:24px;flex-wrap:wrap}
+.pal i{width:44px;height:44px;border-radius:50%;box-shadow:0 0 0 4px var(--card),0 0 0 5px var(--line)}
+
+/* countdown */
+.countdown-section{background:linear-gradient(180deg,rgba(169,200,242,.3),rgba(197,176,240,.3));padding:58px 12px 62px;text-align:center}
+.cl{font-size:13px;letter-spacing:2.5px;text-transform:uppercase;color:var(--ash);margin-bottom:30px;display:block}
+.cds{display:flex;justify-content:center;align-items:flex-start;gap:clamp(4px,2vw,14px)}
+.ring{width:clamp(56px,17vw,88px);height:clamp(56px,17vw,88px);border-radius:50%;background:var(--card);border:2px solid var(--c);display:flex;align-items:center;justify-content:center;box-shadow:0 6px 18px rgba(74,20,32,.12)}
+.ring b{font:700 clamp(18px,5vw,32px) 'Playfair Display',serif;color:var(--ink);line-height:1}
+.cit small{display:block;font-size:clamp(11px,2.4vw,13px);letter-spacing:1px;color:var(--ash);margin-top:8px;text-align:center}
+.dv{font-size:14px;padding-top:clamp(20px,6vw,34px)}
+
+.about{max-width:560px;margin:0 auto;font-size:19px;font-weight:500}
+.about p+p{margin-top:16px}
+
+/* rsvp */
+.rsvp-wrap{padding:60px 30px}
+@media(max-width:480px){.rsvp-wrap{padding:46px 18px}}
+.rsvp{max-width:560px;margin:0 auto;background:var(--paper);border:1px solid var(--line);border-radius:4px;padding:46px 36px;text-align:center;border-bottom:5px solid var(--purple)}
+@media(max-width:480px){.rsvp{padding:34px 20px}}
+.rsvp h3{font:700 clamp(25px,4.5vw,30px) 'Playfair Display',serif;line-height:1.3;margin-bottom:28px}
+form{text-align:left;display:flex;flex-direction:column;gap:22px}
+.lb{display:block;font-size:17px;margin-bottom:8px;font-weight:600}
+input[type=text],textarea{width:100%;padding:13px 16px;border:1px solid var(--line);border-radius:4px;font:inherit;font-size:18px;background:var(--card);color:var(--ink)}
+input[type=text]:focus,textarea:focus{outline:none;border-color:var(--pink)}
+.rg{display:flex;flex-direction:column;gap:12px}
+.rr{display:flex;align-items:center;gap:12px;font-size:18px;cursor:pointer}
+.rr input{position:absolute;opacity:0}
+.rr i{width:20px;height:20px;border-radius:50%;border:2px solid var(--ink);position:relative;flex-shrink:0}
+.rr input:checked+i::after{content:'';position:absolute;inset:3px;border-radius:50%;background:var(--pink)}
+.xtra{overflow:hidden;max-height:300px;transition:.3s}.xtra.hide{opacity:0;max-height:0}
+.note{background:var(--card);border-left:3px solid var(--orange);padding:14px 18px;font-size:16px;color:var(--ash)}
+.sub{padding:15px;border:1px solid var(--ink);border-radius:40px;background:var(--ink);color:var(--card);font:500 17px 'Cormorant Garamond',serif;letter-spacing:2px;cursor:pointer;transition:.2s}
+.sub:hover{background:var(--pink-d);border-color:var(--pink-d);color:#fff}
+#ok{display:none;font-size:20px;margin-top:8px}
+
+.end{position:relative;padding:70px 32px 90px;text-align:center}
+.end h2{font-size:clamp(34px,8vw,54px);font-weight:700;position:relative;z-index:1}
+.sig{margin-top:10px;font-size:20px;letter-spacing:2px;color:var(--ash);font-style:italic;position:relative;z-index:1}
+</style>
+</head>
+<body>
+<div class="invite">
+
+  <section class="hero" id="hero">
+    <div class="arch"></div>
+    <span class="mono mono-a">А</span>
+    <span class="vert">АРТЁМ &amp; СОНЯ</span>
+    <span class="mono mono-b">С</span>
+    <div class="hdate">14.08.2027</div>
+  </section>
+
+  <div class="section greeting rv">
+    <p>Этот день станет началом нашей долгой и счастливой семейной жизни. Мы приглашаем Вас разделить с нами радость, цветы и танцы!</p>
+  </div>
+
+  <div class="sep"></div>
+
+  <div class="calendar-section">
+    <span class="eyebrow" style="--a:var(--yellow)">Сохраните дату</span>
+    <div class="cal-card rv">
+      <div class="cal-month">Август</div>
+      <div class="cw"><span>ПН</span><span>ВТ</span><span>СР</span><span>ЧТ</span><span>ПТ</span><span>СБ</span><span>ВС</span></div>
+      <div class="cd" id="cal"></div>
+      <div class="cal-sub">Суббота · 2027</div>
+    </div>
+  </div>
+
+  <div class="sep"></div>
+
+  <div class="section rv">
+    <span class="eyebrow" style="--a:var(--green)">Программа дня</span>
+    <div class="sch">
+      <div class="si" style="--c:var(--pink)"><div class="st">14:00</div><div class="sd"><i></i></div><div class="sx"><strong>Сбор гостей</strong><span>Welcome-зона, лимонады и улыбки</span></div></div>
+      <div class="si" style="--c:var(--orange)"><div class="st">15:00</div><div class="sd"><i></i></div><div class="sx"><strong>Церемония</strong><span>Сад «Цветочный двор»</span></div></div>
+      <div class="si" style="--c:var(--yellow)"><div class="st">16:30</div><div class="sd"><i></i></div><div class="sx"><strong>Фуршет и фотосессия</strong></div></div>
+      <div class="si" style="--c:var(--green)"><div class="st">18:00</div><div class="sd"><i></i></div><div class="sx"><strong>Банкет</strong><span>Ресторан «Лето»</span></div></div>
+      <div class="si" style="--c:var(--blue)"><div class="st">21:00</div><div class="sd"><i></i></div><div class="sx"><strong>Танцы</strong><span>Берите удобную обувь</span></div></div>
+    </div>
+  </div>
+
+  <div class="sep"></div>
+
+  <div class="section" style="padding-bottom:8px"><span class="eyebrow" style="--a:var(--blue)">Место проведения</span></div>
+  <div class="loc rv" style="--c:var(--pink)">
+    <div class="lt">Церемония · 15:00</div><p class="ln">Сад «Цветочный двор»</p>
+    <p class="la">Москва, ул. Садовая, д. 12</p>
+    <a class="btn" href="https://yandex.ru/maps/?text=Москва, ул. Садовая 12" target="_blank" rel="noopener">Маршрут на карте</a>
+  </div>
+  <div class="loc rv" style="--c:var(--green)">
+    <div class="lt">Банкет · 18:00</div><p class="ln">Ресторан «Лето»</p>
+    <p class="la">Москва, Лесной проезд, д. 5</p>
+    <a class="btn" href="https://yandex.ru/maps/?text=Москва, Лесной проезд 5" target="_blank" rel="noopener">Маршрут на карте</a>
+  </div>
+
+  <div class="sep" style="margin-top:50px"></div>
+
+  <div class="section rv">
+    <span class="eyebrow" style="--a:var(--orange)">Дресс-код</span>
+    <div class="greeting"><p>Мы за цвет и настроение! Выбирайте любые яркие оттенки радуги. Чёрный лучше оставить дома.</p></div>
+    <div class="pal"><i style="background:var(--pink)"></i><i style="background:var(--orange)"></i><i style="background:var(--yellow)"></i><i style="background:var(--green)"></i><i style="background:var(--blue)"></i><i style="background:var(--purple)"></i></div>
+  </div>
+
+  <div class="countdown-section">
+    <span class="cl">До торжества осталось</span>
+    <div class="cds">
+      <div class="cit"><div class="ring" style="--c:var(--pink)"><b id="d">0</b></div><small>дней</small></div><div class="dv" style="color:var(--yellow)">✦</div>
+      <div class="cit"><div class="ring" style="--c:var(--orange)"><b id="h">0</b></div><small>часов</small></div><div class="dv" style="color:var(--green)">✦</div>
+      <div class="cit"><div class="ring" style="--c:var(--green)"><b id="m">0</b></div><small>минут</small></div><div class="dv" style="color:var(--blue)">✦</div>
+      <div class="cit"><div class="ring" style="--c:var(--blue)"><b id="s">0</b></div><small>секунд</small></div>
+    </div>
+  </div>
+
+  <div class="section rv">
+    <span class="eyebrow" style="--a:var(--purple)">О нас</span>
+    <div class="about"><p>Мы шли к этому дню каждый по своей дороге, пока они не стали одной. Впереди целая жизнь, и нам хочется начать её с самыми родными людьми.</p><p>Спасибо, что вы часть нашей истории.</p></div>
+  </div>
+
+  <div class="sep"></div>
+
+  <div class="rsvp-wrap">
+    <div class="rsvp rv">
+      <h3>Подтвердите<br>присутствие</h3>
+      <form id="f">
+        <div><label class="lb" for="n">Ваше имя</label><input type="text" id="n" placeholder="Имя и фамилия"></div>
+        <div><span class="lb">Сможете ли вы присутствовать?</span>
+          <div class="rg">
+            <label class="rr"><input type="radio" name="a" value="yes"><i></i>Да, с радостью</label>
+            <label class="rr"><input type="radio" name="a" value="no"><i></i>К сожалению, не смогу</label>
+          </div></div>
+        <div class="xtra hide" id="x"><label class="lb" for="g">Кто будет с вами?</label><textarea id="g" rows="2" placeholder="Имена гостей, пожелания по меню"></textarea></div>
+        <div class="note">Пожалуйста, подтвердите присутствие до 1 июля 2027 года.</div>
+        <button type="submit" class="sub">ОТПРАВИТЬ</button>
+      </form>
+      <p id="ok">Спасибо! Ваш ответ получен ❤️</p>
+    </div>
+  </div>
+
+  <section class="end" id="end">
+    <h2>Ждём вас!</h2>
+    <p class="sig">Артём &amp; Соня</p>
+  </section>
+</div>
+
+<script>
+(function(){
+  var NS='http://www.w3.org/2000/svg',P=[['#f7a8c0','#f6c94f'],['#fbbf94','#fff3d6'],['#f9dc86','#ee86a6'],['#a9dcbc','#f6c94f'],['#a9c8f2','#fbe28a'],['#c9b6f2','#f6c94f']];
+  function rep(n,fn){var s='';for(var i=0;i<n;i++)s+=fn(i);return s}
+  var G='<linearGradient id="pg" x1="0" y1="1" x2="0" y2="0"><stop offset="0" stop-color="#7a2a40" stop-opacity=".24"/><stop offset=".5" stop-color="#7a2a40" stop-opacity="0"/><stop offset="1" stop-color="#fff" stop-opacity=".5"/></linearGradient><radialGradient id="cg" cx=".35" cy=".35" r=".8"><stop offset="0" stop-color="#fff" stop-opacity=".6"/><stop offset="1" stop-color="#7a2a40" stop-opacity=".3"/></radialGradient>';
+  function pt(d,t){return '<g transform="'+t+'"><path d="'+d+'" fill="currentColor"/><path d="'+d+'" fill="url(#pg)"/><path d="M0-4V-28" stroke="#7a2a40" stroke-opacity=".1" fill="none"/></g>'}
+  function ctr(r){return '<circle r="'+r+'" fill="var(--c2)"/><circle r="'+r+'" fill="url(#cg)"/>'}
+  function stam(n,r){return rep(n,function(i){var a=i*6.283/n,x=r*Math.cos(a),y=r*Math.sin(a);return '<path d="M0 0L'+x.toFixed(1)+' '+y.toFixed(1)+'" stroke="var(--c2)" stroke-width="1.1"/><circle cx="'+x.toFixed(1)+'" cy="'+y.toFixed(1)+'" r="1.8" fill="var(--c2)"/>'})}
+  var pw='M0 0C-20-8-22-34 0-42 22-34 20-8 0 0Z',pd='M0 0C-6-10-6-30 0-46 6-30 6-10 0 0Z',pb='M0 0C-24-6-26-30-10-40L0-33 10-40C26-30 24-6 0 0Z',pc='M0 0C-22-8-22-40-11-46L0-39 11-46C22-40 22-8 0 0Z',tu='M0 30C-22 28-26-8 0-40 26-8 22 28 0 30Z',lfp='M0 0C-18-14-18-38 0-54 18-38 18-14 0 0Z';
+  var D={
+    f1:rep(9,function(i){return pt(pw,'rotate('+40*i+') scale(1.05)')})+rep(8,function(i){return pt(pw,'rotate('+(20+45*i)+') scale(.78)')})+rep(6,function(i){return pt(pw,'rotate('+(10+60*i)+') scale(.5)')})+ctr(4),
+    f2:rep(20,function(i){return pt(pd,'rotate('+18*i+')')})+ctr(12)+rep(8,function(i){var a=i*.785;return '<circle cx="'+(7*Math.cos(a)).toFixed(1)+'" cy="'+(7*Math.sin(a)).toFixed(1)+'" r="1.2" fill="#7a2a40" opacity=".25"/>'}),
+    f3:rep(5,function(i){return pt(pb,'rotate('+72*i+')')})+ctr(5)+stam(10,13),
+    f4:rep(8,function(i){return pt(pc,'rotate('+45*i+')')})+ctr(8)+stam(8,5),
+    f5:pt(tu,'rotate(-22 0 28)')+pt(tu,'rotate(22 0 28)')+pt(tu,'translate(0 -2)'),
+    lf:pt(lfp,'')+'<path d="M0 0V-48M0-14L-8-22M0-14L8-22M0-26L-8-34M0-26L8-34" stroke="#fff" stroke-opacity=".45" fill="none"/>'
+  };
+  var defs=G;for(var k in D)defs+='<symbol id="'+k+'" viewBox="-50 -55 100 110" overflow="visible">'+D[k]+'</symbol>';
+  var sv=document.createElementNS(NS,'svg');sv.setAttribute('width',0);sv.setAttribute('height',0);sv.style.position='absolute';sv.innerHTML='<defs>'+defs+'</defs>';document.body.prepend(sv);
+
+  function fl(type,ci,size,style,cls){var c=P[ci%6],col=type=='lf'?(ci%2?'#8fcfa5':'#b5dc9c'):c[0];
+    if(type!='lf')return '<img class="'+(cls||'')+'" src="flov'+type.slice(1)+'.png" alt="" width="'+size+'" height="'+size+'" style="'+(style||'')+'">';
+    return '<svg class="'+(cls||'')+'" width="'+size+'" height="'+size+'" viewBox="-50 -55 100 110" style="color:'+col+';--c2:'+c[1]+';'+(style||'')+'"><use href="#'+type+'"/></svg>'}
+  function place(el,items){var h='';items.forEach(function(p,i){
+    h+=fl(p[0],p[5],p[3],'left:'+p[1]+'%;top:'+p[2]+'%;margin:-'+p[3]/2+'px 0 0 -'+p[3]/2+'px;--r:'+p[4]+'deg;transform:rotate('+p[4]+'deg);animation-delay:-'+(i*.8)+'s','fl')});
+    el.insertAdjacentHTML('beforeend',h)}
+  // hero: leaves first, then flowers
+  place(document.getElementById('hero'),[
+    ['lf',22,70,90,-50,0],['lf',88,67,90,50,1],['lf',10,22,80,-30,2],['lf',92,30,80,40,3],['lf',8,92,90,-60,0],['lf',92,94,90,60,1],
+    ['f1',9,8,96,10,0],['f2',90,13,80,0,2],['f4',5,50,70,20,5],['f3',95,56,76,0,1],
+    ['f1',20,74,110,0,4],['f4',27,90,84,15,1],['f2',8,64,62,0,3],['f3',74,95,76,0,5],['f1',91,82,100,20,0],
+    ['f5',11,36,66,-14,2],['f5',90,36,62,14,4],['f2',24,5,52,0,3],['f3',72,6,54,0,4],['f3',48,3,40,0,0]]);
+  place(document.getElementById('end'),[
+    ['lf',12,36,80,-40,0],['lf',88,34,80,40,1],['f1',8,18,90,0,0],['f2',92,20,78,0,3],['f4',16,78,84,10,4],['f3',84,80,92,0,5],['f5',50,6,50,0,2],['f2',50,96,60,0,1]]);
+  document.querySelectorAll('.sep').forEach(function(s,i){var t=['f1','f2','f3','f4','f5'];s.insertAdjacentHTML('afterbegin','');var d=document.createElement('span');d.style.display='flex';d.innerHTML=fl(t[i%5],i,30,'position:static');s.insertBefore(d,null)});
+
+  var cal=document.getElementById('cal'),h='',i;
+  for(i=0;i<6;i++)h+='<span class="cc"></span>';
+  for(i=1;i<=31;i++)h+=i==14?'<span class="cc hl"><svg viewBox="0 0 24 24"><path d="M12 21C5 15 2 11.5 2 8a5 5 0 0 1 10-1 5 5 0 0 1 10 1c0 3.5-3 7-10 13z"/></svg><span style="position:relative;font-size:clamp(11px,2.7vw,14px)">14</span></span>':'<span class="cc">'+i+'</span>';
+  cal.innerHTML=h;
+
+  var T=new Date('2027-08-14T15:00:00').getTime();
+  function tick(){var x=Math.max(0,T-Date.now());
+    d.textContent=Math.floor(x/864e5);h2.textContent=Math.floor(x%864e5/36e5);m.textContent=Math.floor(x%36e5/6e4);s.textContent=Math.floor(x%6e4/1e3)}
+  var d=document.getElementById('d'),h2=document.getElementById('h'),m=document.getElementById('m'),s=document.getElementById('s');
+  tick();setInterval(tick,1000);
+
+  var els=document.querySelectorAll('.rv');
+  if('IntersectionObserver' in window){var o=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('on');o.unobserve(e.target)}})},{threshold:.12});els.forEach(function(e){o.observe(e)})}
+  else els.forEach(function(e){e.classList.add('on')});
+
+  document.querySelectorAll('input[name=a]').forEach(function(r){r.addEventListener('change',function(){document.getElementById('x').classList.toggle('hide',this.value!='yes')})});
+  document.getElementById('f').addEventListener('submit',function(e){e.preventDefault();
+    if(!document.getElementById('n').value.trim()){alert('Пожалуйста, укажите ваше имя');return}
+    if(!document.querySelector('input[name=a]:checked')){alert('Пожалуйста, выберите, сможете ли вы прийти');return}
+    this.style.display='none';document.getElementById('ok').style.display='block'});
+})();
+</script>
+</body>
+</html>
