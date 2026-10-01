@@ -6,9 +6,8 @@
 <title>Артём & Соня — Свадьба</title>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Playfair+Display:wght@300;400;500;700;800&display=swap" rel="stylesheet">
 <style>
-:root{--ink:#5a3a45;--bg:#f5ead6;--paper:#efe1c8;--card:#f5ead6;--ash:#8f6e74;--line:#e0cfb0;--pink:#f0c3d2;--orange:#f4d2b9;--yellow:#f3e6b8;--green:#c2e0cf;--blue:#c0d3f0;--purple:#d3c8ee;--pink-d:#d99ab2;--blue-d:#9db8e2;
-box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
-html{scroll-behavior:smooth;scroll-padding-top:env(safe-area-inset-top,0px)}
+:root{--ink:#5a3a45;--bg:#f5ead6;--paper:#efe1c8;--card:#f5ead6;--ash:#8f6e74;--line:#e0cfb0;--pink:#f0c3d2;--orange:#f4d2b9;--yellow:#f3e6b8;--green:#c2e0cf;--blue:#c0d3f0;--purple:#d3c8ee;--pink-d:#d99ab2;--blue-d:#9db8e2}
+html{scroll-behavior:smooth;scroll-padding-top:env(safe-area-inset-top,0px);box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 body{background:var(--bg);color:var(--ink);font-family:'Cormorant Garamond',serif;line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden}
 h1,h2,h3,.pf{font-family:'Playfair Display',serif}
@@ -255,8 +254,9 @@ input[type=text]:focus,textarea:focus{outline:none;border-color:var(--pink)}
   document.querySelectorAll('.sep').forEach(function(s,i){var t=['f1','f2','f3','f4','f5'];s.insertAdjacentHTML('afterbegin','');var d=document.createElement('span');d.style.display='flex';d.innerHTML=fl(t[i%5],i,30,'position:static');s.insertBefore(d,null)});
 
   var cal=document.getElementById('cal'),h='',i;
-  for(i=0;i<6;i++)h+='<span class="cc"></span>';
-  for(i=1;i<=31;i++)h+=i==14?'<span class="cc hl"><svg viewBox="0 0 24 24"><path d="M12 21C5 15 2 11.5 2 8a5 5 0 0 1 10-1 5 5 0 0 1 10 1c0 3.5-3 7-10 13z"/></svg><span style="position:relative;font-size:clamp(11px,2.7vw,14px)">14</span></span>':'<span class="cc">'+i+'</span>';
+  var WD=new Date(2027,7,1),lead=(WD.getDay()+6)%7,days=new Date(2027,8,0).getDate();
+  for(i=0;i<lead;i++)h+='<span class="cc"></span>';
+  for(i=1;i<=days;i++)h+=i==14?'<span class="cc hl"><svg viewBox="0 0 24 24"><path d="M12 21C5 15 2 11.5 2 8a5 5 0 0 1 10-1 5 5 0 0 1 10 1c0 3.5-3 7-10 13z"/></svg><span style="position:relative;font-size:clamp(11px,2.7vw,14px)">14</span></span>':'<span class="cc">'+i+'</span>';
   cal.innerHTML=h;
 
   var T=new Date('2027-08-14T15:00:00').getTime();
